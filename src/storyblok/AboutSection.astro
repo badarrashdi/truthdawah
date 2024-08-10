@@ -7,7 +7,7 @@ const renderedRichText = renderRichText(blok.description)
 
 ---
 
-<div class="w-full" {...storyblokEditable(blok)}>
+<div class="w-full px-4" {...storyblokEditable(blok)}>
     <div class="container m-auto flex items-center flex-col md:flex-row gap-8 lg:gap-20">
         <div class="md:w-1/2">
             <Image src={blok.image.filename} width={1600} height={800} alt={blok.image.alt || blok.title } class="w-full h-full object-cover" />

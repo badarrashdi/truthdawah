@@ -1,0 +1,15 @@
+---
+
+import { storyblokEditable } from "@storyblok/astro";
+import { Image as AImage } from "astro:assets";
+
+const { blok } = Astro.props;
+---
+
+<div class={` flex gap-4`} {...storyblokEditable(blok)}>
+  <div class={`w-full`}>
+    {blok?.image?.filename && <AImage src={blok?.image?.filename} width={600} height={400} alt={blok?.image?.alt || blok.title } class="w-full h-full object-cover" />}
+    {blok?.title && <h4 class="text-xl mt-4">{blok.title}</h4>}
+    {blok?.description && <p class="text-md">{blok.description}</p>}
+  </div>
+</div>

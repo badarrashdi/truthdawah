@@ -1,3 +1,8 @@
+---
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+---
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,9 +10,70 @@
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>@storyblok/astro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
   </head>
 
-  <body class="container">
+  <body>
+    <Header />
     <slot />
+    <Footer/>
+    <style is:global>
+      body {
+    margin: 0;
+    font-family: "Open", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #737373;
+    background-color: #fff;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+a {
+    color: #f1c152;
+    text-decoration: none;
+}
+      .btn {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #737373;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid rgba(0, 0, 0, 0);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: 0px;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+.btn-primary {
+    color: #000;
+    background-color: #f1c152;
+    border-color: #f1c152;
+}
+h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
+    margin-top: 0;
+    margin-bottom: .5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #0d0d0d;
+    font-family: 'Open', sans-serif !important;
+}
+p {
+  margin-bottom: 20px;
+}
+ul li p {
+  margin: 0;
+}
+
+    </style>
   </body>
 </html>

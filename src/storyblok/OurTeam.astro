@@ -1,0 +1,39 @@
+---
+
+import { storyblokEditable, renderRichText } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import { Image } from "astro:assets";
+
+const { blok } = Astro.props;
+const renderedRichText = renderRichText(blok.description)
+
+---
+
+<div class="w-full pt-10" {...storyblokEditable(blok)}>
+  <div class="container mx-auto flex flex-col md:flex-row gap-16">
+    <div class="md:w-[45%]">
+      <div class="photo p-6 shadow-lg">
+        {blok?.image?.filename && <Image src={blok?.image?.filename} width={400} height={600} alt={blok?.image?.alt || blok?.name} class="w-full h-full object-cover" />}
+      </div>
+    </div>
+    <div class="md:w-[55%]">
+      <h3 class="text-3xl">{blok.name}</h3>
+      <p class="text-primary text-lg">{blok.title}</p>
+      <div set:html={renderedRichText} />
+      <div class="team-icon flex pb-4 mb-4 border-b border-primary">
+        <a class="btn btn-primary btn-lg-square me-2" href=""><i class="fab fa-facebook-f"></i></a>
+        <a class="btn btn-primary btn-lg-square me-2" href=""><i class="fab fa-twitter"></i></a>
+        <a href="#" class="btn btn-primary btn-lg-square me-2"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="btn btn-primary btn-lg-square"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {blok?.team?.map((item, index) => {
+          return(
+             <StoryblokComponent key={index} blok={item} />
+          )
+      })}
+      </div>
+    </div>
+
+  </div>
+</div>

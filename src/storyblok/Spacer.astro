@@ -1,0 +1,23 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+
+const { blok } = Astro.props;
+
+// Use the provided values from Storyblok or default to 80px (desktop) and 40px (mobile)
+const spaceStyle = blok.space ? `${blok.space}px` : '80px'; 
+const spaceStyleMob = blok.spaceMobile ? `${blok.spaceMobile}px` : '40px'; 
+---
+
+<div {...storyblokEditable(blok)}>
+  <!-- Apply dynamic inline styles for spacing -->
+  <div style={`height: ${spaceStyleMob};`} class="md:hidden"></div>
+  <div style={`height: ${spaceStyle};`} class="hidden md:block"></div>
+  
+  {blok.border && (
+    <hr class="w-full border-t-1 border-t-[#ffffff29] border-0 m-0 p-0 opacity-60" />
+  )}
+  
+  <!-- Apply dynamic inline styles for spacing -->
+  <div style={`height: ${spaceStyleMob};`} class="md:hidden"></div>
+  <div style={`height: ${spaceStyle};`} class="hidden md:block"></div>
+</div>
